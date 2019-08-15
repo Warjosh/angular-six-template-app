@@ -1,0 +1,100 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div [ngClass]="classCss" >
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">{{titulo}}</h4>
+                    </div>
+                    <div class="content">
+                        <form [formGroup]="usuarioForm">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label> Nombre Completo</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Completo" formControlName="nombreCompleto" required>
+                                        <small *ngIf="usuarioForm.controls['nombreCompleto'].hasError('required') && usuarioForm.controls['nombreCompleto'].touched" class="text-danger">Debes ingresar un nombre</small>                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input  type="email" class="form-control" placeholder="Username" formControlName="username" required>
+                                        <small *ngIf="usuarioForm.controls['username'].hasError('required') && usuarioForm.controls['username'].touched" class="text-danger">Debes ingresar un username</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Correo Electronico</label>
+                                        <input type="email" class="form-control" placeholder="Correo Electr&oacute;nico" formControlName="correo" id="correo" required>
+                                        <small *ngIf="usuarioForm.controls['correo'].hasError('required') && usuarioForm.controls['correo'].touched" class="text-danger">Debes ingresar un correo</small>
+                                        <small *ngIf="usuarioForm.controls['correo'].errors?.email && usuarioForm.controls['correo'].touched" class="text-danger">Debes ingresar un correo electr&oacute;nico v&aacute;lido</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="!disabled">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <input type="password" class="form-control" placeholder="Password" formControlName="password" required >
+                                        <small *ngIf="usuarioForm.controls['password'].hasError('required') && usuarioForm.controls['password'].touched" class="text-danger">Debes ingresar el password</small>
+                                        <small *ngIf="usuarioForm.controls['password'].hasError('minlength') && usuarioForm.controls['password'].touched"  class="text-danger">La contraseña debe ser de minimo 6 carateres.</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" *ngIf="!disabled">
+                                    <div class="form-group">
+                                        <label>Confirmar contraseña</label>
+                                        <input type="password" class="form-control" placeholder="Confirme Password" formControlName="confirmaPassword" required>
+                                        <small *ngIf="usuarioForm.controls['confirmaPassword'].hasError('required') && usuarioForm.controls['confirmaPassword'].touched" class="text-danger">Debes confirmar el password</small>
+                                        <small *ngIf="usuarioForm.controls['confirmaPassword'].hasError('minlength') && usuarioForm.controls['confirmaPassword'].touched"  class="text-danger">La contraseña debe ser de minimo 6 carateres.</small>
+                                        <small *ngIf="!(usuarioForm.value.password === usuarioForm.value.confirmaPassword) " class="text-danger">Las contrase&ntilde;as no coinciden</small>                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Teléfono</label>
+                                        <input type="text" class="form-control"  placeholder="Celular" formControlName="celular" mask="+00 (000) 000 00 00" [formControl]="usuarioForm.controls['celular']" required>
+                                        <small *ngIf="usuarioForm.controls['celular'].hasError('required') && usuarioForm.controls['celular'].touched" class="text-danger">Debes ingresar un celular</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-fill pull-right" (click)="agregar()" [disabled]="!usuarioForm.valid">Guardar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="disabled">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <a href="#">
+                                <img class="avatar border-gray" src="assets/img/faces/face-0.jpg" alt="..."/>
+                                <hr>
+                                <h4 class="title">{{usuarioForm.value.nombreCompleto}}<br />
+                                    <small>{{usuarioForm.value.correo}}</small>
+                                    <br>
+                                    <small>{{usuarioForm.value.username}}</small>
+                                </h4>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div> -->
+                </div>            
+        </div>            
+        </div>
+    </div>
+</div>
+

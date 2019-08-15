@@ -1,0 +1,42 @@
+<div class="header-wrapper">    
+        <div class="header" style="background-image: url('../src/assets/img/full-screen-image-4.jpg');">
+            <div class="filter"></div>
+            <div class="title-container text-center">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- begin forget password -->
+                        <div class=" col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                            <div class="text-center">
+                                <h4 > Recuperar contraseña </h4>
+                                <form [formGroup]="restablecerForm">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-8 col-md-offset-2  ">
+                                                <div class="form-group">
+                                                    <label>Contraseña</label>
+                                                    <input type="password" class="form-control" placeholder="Password" formControlName="password" required >
+                                                    <small *ngIf="restablecerForm.controls['password'].hasError('required') && restablecerForm.controls['password'].touched" class="text-danger">Debes ingresar el password</small>
+                                                    <small *ngIf="restablecerForm.controls['password'].hasError('minlength') && restablecerForm.controls['password'].touched"  class="text-danger">La contraseña debe ser de minimo 6 carateres.</small>
+                                                </div>
+                                            </div>  
+                                            <div class="col-md-8 col-md-offset-2  ">
+                                                <div class="form-group">
+                                                    <label>Confirmar contraseña</label>
+                                                    <input type="password" class="form-control" placeholder="Confirme Password" formControlName="confirmaPassword" required>
+                                                    <small *ngIf="restablecerForm.controls['confirmaPassword'].hasError('required') && restablecerForm.controls['confirmaPassword'].touched" class="text-danger">Debes confirmar el password</small>
+                                                    <small *ngIf="restablecerForm.controls['confirmaPassword'].hasError('minlength') && restablecerForm.controls['confirmaPassword'].touched"  class="text-danger">La contraseña debe ser de minimo 6 carateres.</small>
+                                                    <small *ngIf="!(restablecerForm.value.password === restablecerForm.value.confirmaPassword) " class="text-danger">Las contrase&ntilde;as no coinciden</small>                                        
+                                                </div>
+                                            </div>                                                        
+                                        </div>
+                                        <button type="submit" class="btn btn-info btn-round btn-fill col-md-4 col-md-offset-4"  (click)="guardar()" [disabled]="!restablecerForm.valid">Guardar</button>                                                                             
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end forget password -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

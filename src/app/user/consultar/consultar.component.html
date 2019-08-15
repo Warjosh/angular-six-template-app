@@ -1,0 +1,28 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">{{Titulo}}</h4>
+                        <!-- <p class="category">Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <br>
+                        <ngx-datatable class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [scrollbarH]="true" [rows]='usuarios'>
+                        </ngx-datatable>
+                        <ng-template #phoneTemplate let-value="value" ngx-datatable-cell-template>
+                            {{ value | mask: '+00 (000) 000-0000' }}
+                        </ng-template>
+                        <ng-template #menuTemplate let-row="row" let-value="value" ngx-datatable-cell-template>
+                            <button class="btn btn-default btn-xs btn-simple" [routerLink]="['/consultar_usuario/editar_usuario',value]">
+                                <mat-icon>border_color</mat-icon>
+                            </button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

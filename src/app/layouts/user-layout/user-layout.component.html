@@ -1,0 +1,6 @@
+<div class="main-panel-user" *ngIf="isLogin('login') && isLogin('recuperar') && isRestablecer('restablecer')">
+    <navbar-cmp></navbar-cmp> 
+        <router-outlet></router-outlet>
+    <footer-cmp></footer-cmp> 
+</div>
+<router-outlet *ngIf="!(isLogin('login')) || !(isLogin('recuperar')) || !(isRestablecer('restablecer'))"></router-outlet>  
